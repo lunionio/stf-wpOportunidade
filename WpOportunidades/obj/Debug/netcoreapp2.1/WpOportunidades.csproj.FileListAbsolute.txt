@@ -1,0 +1,46 @@
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.deps.json
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.runtimeconfig.json
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.runtimeconfig.dev.json
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csprojAssemblyReference.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csproj.CoreCompileInputs.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorAssemblyInfo.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorAssemblyInfo.cs
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.AssemblyInfoInputs.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.AssemblyInfo.cs
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorTargetAssemblyInfo.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csproj.CopyComplete
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.deps.json
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.runtimeconfig.json
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.runtimeconfig.dev.json
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.dll
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.pdb
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Work\wpoportunidade\WpOportunidades\bin\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csprojAssemblyReference.cache
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csproj.CoreCompileInputs.cache
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorAssemblyInfo.cache
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorAssemblyInfo.cs
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.AssemblyInfoInputs.cache
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.AssemblyInfo.cs
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.RazorTargetAssemblyInfo.cache
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.csproj.CopyComplete
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.dll
+C:\Work\wpoportunidade\WpOportunidades\obj\Debug\netcoreapp2.1\WpOportunidades.pdb

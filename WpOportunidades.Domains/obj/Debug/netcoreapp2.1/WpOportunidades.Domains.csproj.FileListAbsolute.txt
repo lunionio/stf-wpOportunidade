@@ -1,0 +1,32 @@
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csprojAssemblyReference.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csproj.CoreCompileInputs.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.AssemblyInfoInputs.cache
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.AssemblyInfo.cs
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.deps.json
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csproj.CopyComplete
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.deps.json
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Work\wpoportunidade\WpOportunidades.Domains\bin\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csprojAssemblyReference.cache
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csproj.CoreCompileInputs.cache
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.AssemblyInfoInputs.cache
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.AssemblyInfo.cs
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.csproj.CopyComplete
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.dll
+C:\Work\wpoportunidade\WpOportunidades.Domains\obj\Debug\netcoreapp2.1\WpOportunidades.Domains.pdb

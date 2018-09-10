@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WpOportunidades.Entities\WpOportunidades.Entities.csproj" />
+    <ProjectReference Include="..\WpOportunidades.Infrastructure\WpOportunidades.Infrastructure.csproj" />
+    <ProjectReference Include="..\WpOportunidades.Services\WpOportunidades.Services.csproj" />
+  </ItemGroup>
+
+</Project>
