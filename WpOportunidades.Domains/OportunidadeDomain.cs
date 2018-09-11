@@ -13,15 +13,14 @@ namespace WpOportunidades.Domains
     {
         private readonly SegurancaService _segService;
         private readonly OportunidadeRepository _opRepository;
-        private readonly EnderecoService _endService;
         private readonly UserXOportunidadeRepository _repository;
         
         public OportunidadeDomain(SegurancaService service, 
-            OportunidadeRepository repository, EnderecoService endService)
+            OportunidadeRepository repository, UserXOportunidadeRepository xRepository)
         {
             _segService = service;
             _opRepository = repository;
-            _endService = endService;
+            _repository = xRepository;
         }
 
         /// <summary>
@@ -31,28 +30,20 @@ namespace WpOportunidades.Domains
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
-        public async Task SaveAsync(Oportunidade oportunidade, string token)
+        public async Task<Oportunidade> SaveAsync(Oportunidade oportunidade, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                if (oportunidade.ID == 0)
-                {
-                    oportunidade.DataCriacao = DateTime.UtcNow;
-                    oportunidade.DataEdicao = DateTime.UtcNow;
-                    oportunidade.Ativo = true;
+                oportunidade.DataCriacao = DateTime.UtcNow;
+                oportunidade.DataEdicao = DateTime.UtcNow;
+                oportunidade.Ativo = true;
 
-                    var result = _opRepository.Add(oportunidade);
+                var result = _opRepository.Add(oportunidade);
 
-                    oportunidade.Endereco.OportunidadeId = result;
+                oportunidade.Endereco.OportunidadeId = result;
 
-                    //Retornar o oportunidade para salvar o endereço lá por forano domain do endereço
-                    await _endService.SaveEnderecoAsync(oportunidade.Endereco, token);
-                }
-                else
-                {
-                    await UpdateAsync(oportunidade, token);
-                }
+                return oportunidade;
             }
             catch(Exception e)
             {
@@ -60,19 +51,19 @@ namespace WpOportunidades.Domains
             }
         }
 
-        private async Task UpdateAsync(Oportunidade oportunidade, string token)
+        public async Task<Oportunidade> UpdateAsync(Oportunidade oportunidade, string token)
         {
             try
             {
+                await _segService.ValidateTokenAsync(token);
                 oportunidade.DataEdicao = DateTime.UtcNow;
                 _opRepository.Update(oportunidade);
 
-                await _endService.RemoveEnderecoAsync(oportunidade.Endereco, token);
-                await _endService.SaveEnderecoAsync(oportunidade.Endereco, token);
+                return oportunidade;
             }
             catch(Exception e)
             {
-                throw new OportunidadeException("Não foi possível atualizar o endereço.", e);
+                throw new OportunidadeException("Não foi possível atualizar a oportunidade.", e);
             }
         }
 
@@ -87,7 +78,7 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                await _segService.ValidateTokenAsync(token);
+                //await _segService.ValidateTokenAsync(token);
 
                 var result = _opRepository.GetAll().Where(o => o.Status != 9 && o.IdCliente.Equals(idCliente)).ToList();
 
@@ -109,7 +100,7 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                await _segService.ValidateTokenAsync(token);
+                //await _segService.ValidateTokenAsync(token);
 
                 var op = _opRepository.GetList(o => o.ID.Equals(id)).SingleOrDefault();
                 return op;
@@ -120,11 +111,14 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public void DeleteAsync(Oportunidade oportunidade, string token)
+        public async Task DeleteAsync(Oportunidade oportunidade, string token)
         {
             try
             {
-                _opRepository.Remove(oportunidade);
+                await _segService.ValidateTokenAsync(token);
+                oportunidade.Status = 9;
+                oportunidade.Ativo = false;
+                _opRepository.Update(oportunidade);
             }
             catch(Exception e)
             {
@@ -178,17 +172,22 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<IEnumerable<Oportunidade>> GetUserOportunidades(string token, int userId)
+        public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
 
                 var result = _repository.GetAll()
-                    .Where(x => x.IdUser.Equals(userId))
-                    .Select(r => r.IdOportunidade).ToList();
+                    .Where(x => x.UserId.Equals(userId)).ToList();
 
-                var opts = _opRepository.GetAll().Where(o => result.Contains(o.ID)).ToList();
+                var ids = result.Select(r => r.OportunidadeId);
+                var opts = _opRepository.GetAll().Where(o => ids.Contains(o.ID)).ToList();
+
+                //foreach (var opt in opts) //Esse Status de Ativo e Desativo/Excluso? Fazer Chave estrangeira com classe Status?
+                //{
+                //    opt.Status = result.FirstOrDefault(x => x.OportunidadeId.Equals(opt.ID)).StatusID;
+                //}
 
                 return opts;
             }

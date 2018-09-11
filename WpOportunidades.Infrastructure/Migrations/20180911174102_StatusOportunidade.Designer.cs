@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WpOportunidades.Infrastructure;
 
 namespace WpOportunidades.Infrastructure.Migrations
 {
     [DbContext(typeof(WpOportunidadesContext))]
-    partial class WpOportunidadesContextModelSnapshot : ModelSnapshot
+    [Migration("20180911174102_StatusOportunidade")]
+    partial class StatusOportunidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -132,7 +134,12 @@ namespace WpOportunidades.Infrastructure.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<int>("UserXOportunidadeId");
+
                     b.HasKey("ID");
+
+                    b.HasIndex("UserXOportunidadeId")
+                        .IsUnique();
 
                     b.ToTable("Status");
                 });
@@ -145,15 +152,11 @@ namespace WpOportunidades.Infrastructure.Migrations
 
                     b.Property<int>("OportunidadeId");
 
-                    b.Property<int?>("StatusID");
-
                     b.Property<int>("UserId");
 
                     b.HasKey("ID");
 
                     b.HasIndex("OportunidadeId");
-
-                    b.HasIndex("StatusID");
 
                     b.ToTable("UserXOportunidades");
                 });
@@ -166,16 +169,20 @@ namespace WpOportunidades.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("WpOportunidades.Entities.Status", b =>
+                {
+                    b.HasOne("WpOportunidades.Entities.UserXOportunidade", "UserXOportunidade")
+                        .WithOne("Status")
+                        .HasForeignKey("WpOportunidades.Entities.Status", "UserXOportunidadeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("WpOportunidades.Entities.UserXOportunidade", b =>
                 {
                     b.HasOne("WpOportunidades.Entities.Oportunidade", "Oportunidade")
                         .WithMany()
                         .HasForeignKey("OportunidadeId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WpOportunidades.Entities.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusID");
                 });
 #pragma warning restore 612, 618
         }

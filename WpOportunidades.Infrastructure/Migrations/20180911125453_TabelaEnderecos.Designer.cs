@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WpOportunidades.Infrastructure;
 
 namespace WpOportunidades.Infrastructure.Migrations
 {
     [DbContext(typeof(WpOportunidadesContext))]
-    partial class WpOportunidadesContextModelSnapshot : ModelSnapshot
+    [Migration("20180911125453_TabelaEnderecos")]
+    partial class TabelaEnderecos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,58 +126,12 @@ namespace WpOportunidades.Infrastructure.Migrations
                     b.ToTable("Oportunidades");
                 });
 
-            modelBuilder.Entity("WpOportunidades.Entities.Status", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Status");
-                });
-
-            modelBuilder.Entity("WpOportunidades.Entities.UserXOportunidade", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OportunidadeId");
-
-                    b.Property<int?>("StatusID");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("OportunidadeId");
-
-                    b.HasIndex("StatusID");
-
-                    b.ToTable("UserXOportunidades");
-                });
-
             modelBuilder.Entity("WpOportunidades.Entities.Endereco", b =>
                 {
                     b.HasOne("WpOportunidades.Entities.Oportunidade", "Oportunidade")
                         .WithOne("Endereco")
                         .HasForeignKey("WpOportunidades.Entities.Endereco", "OportunidadeId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("WpOportunidades.Entities.UserXOportunidade", b =>
-                {
-                    b.HasOne("WpOportunidades.Entities.Oportunidade", "Oportunidade")
-                        .WithMany()
-                        .HasForeignKey("OportunidadeId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("WpOportunidades.Entities.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusID");
                 });
 #pragma warning restore 612, 618
         }

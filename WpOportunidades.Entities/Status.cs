@@ -4,10 +4,19 @@ using System.Text;
 
 namespace WpOportunidades.Entities
 {
-    public enum Status
+    public class Status
     {
-        Aprovado,
-        Aguardando,
-        Reprovado
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public Status()
+        {
+
+        }
+
+        public Status(int id)
+        {
+            ID = id;
+        }
     }
 }

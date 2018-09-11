@@ -95,7 +95,7 @@ namespace WpOportunidades.Infrastructure
             context.Entry(item).State = EntityState.Added;
             context.SaveChanges();
 
-            return (item as Base).ID;
+            return (item as dynamic).ID;
         }
         /// <summary>
         /// Atualiza um item na base de dados 

@@ -28,10 +28,12 @@ namespace WpOportunidades
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<SegurancaService>();
-            services.AddTransient<EnderecoService>();
+            services.AddTransient<SegurancaService>(); 
             services.AddTransient<OportunidadeRepository>();
+            services.AddTransient<EnderecoRepository>();
             services.AddTransient<OportunidadeDomain>();
+            services.AddTransient<EnderecoDomain>();
+            services.AddTransient<UserXOportunidadeRepository>();
 
             var corsBuilder = new CorsPolicyBuilder();
             corsBuilder.AllowAnyHeader();

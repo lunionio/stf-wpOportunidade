@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using WpOportunidades.Entities;
 
 namespace WpOportunidades.Infrastructure
