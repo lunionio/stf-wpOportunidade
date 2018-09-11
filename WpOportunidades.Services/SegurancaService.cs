@@ -8,7 +8,7 @@ namespace WpOportunidades.Services
     public class SegurancaService
     {
         private const string BASE_URL = "http://localhost:5300/";
-        private const string URL = "/api/token/ValidaToken/";
+        private const string URL = "api/token/ValidaToken/";
 
         /// <summary>
         /// 
@@ -21,10 +21,10 @@ namespace WpOportunidades.Services
         {
             try
             {
-                RestClient client = new RestClient(BASE_URL);
+                var client = new RestClient(BASE_URL);
                 var url = $"{ URL }{ token }";
-                RestRequest request = null;
-                request = new RestRequest(url, Method.GET);
+                var request = new RestRequest(url, Method.GET);
+
                 var response = await client.ExecuteTaskAsync(request);
 
                 if (!response.IsSuccessful)

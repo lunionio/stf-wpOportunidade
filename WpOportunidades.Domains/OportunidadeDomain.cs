@@ -78,7 +78,7 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                //await _segService.ValidateTokenAsync(token);
+                await _segService.ValidateTokenAsync(token);
 
                 var result = _opRepository.GetAll().Where(o => o.Status != 9 && o.IdCliente.Equals(idCliente)).ToList();
 
@@ -100,7 +100,7 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                //await _segService.ValidateTokenAsync(token);
+                await _segService.ValidateTokenAsync(token);
 
                 var op = _opRepository.GetList(o => o.ID.Equals(id)).SingleOrDefault();
                 return op;
@@ -172,7 +172,7 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
+        public async Task<IEnumerable<UserXOportunidade>> GetUserOportunidadesAsync(string token, int userId)
         {
             try
             {
@@ -183,13 +183,17 @@ namespace WpOportunidades.Domains
 
                 var ids = result.Select(r => r.OportunidadeId);
                 var opts = _opRepository.GetAll().Where(o => ids.Contains(o.ID)).ToList();
+                
+                var statusIds = result.Select(r => r.StatusID);
+                var allStatus = new StatusRepository().GetAll().Where(s => statusIds.Contains(s.ID)).ToList();
 
-                //foreach (var opt in opts) //Esse Status de Ativo e Desativo/Excluso? Fazer Chave estrangeira com classe Status?
-                //{
-                //    opt.Status = result.FirstOrDefault(x => x.OportunidadeId.Equals(opt.ID)).StatusID;
-                //}
+                foreach (var r in result)
+                {
+                    r.Oportunidade = opts.FirstOrDefault(o => o.ID.Equals(r.OportunidadeId));
+                    r.Status = allStatus.FirstOrDefault(s => s.ID.Equals(r.StatusID));
+                }
 
-                return opts;
+                return result;
             }
             catch(Exception e)
             {

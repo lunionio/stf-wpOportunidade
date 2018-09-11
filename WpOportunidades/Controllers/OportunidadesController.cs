@@ -181,16 +181,16 @@ namespace WpOportunidades.Controllers
         {
             try
             {
-                var oportunidades = await _opDomain.GetUserOportunidadesAsync(token, idUser);
+                var result = await _opDomain.GetUserOportunidadesAsync(token, idUser);
 
-                var enderecos = await _edDomain.GetEnderecosAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                var enderecos = await _edDomain.GetEnderecosAsync(result.Select(x => x.OportunidadeId).ToList(), token);
 
-                foreach (var opt in oportunidades)
+                foreach (var r in result)
                 {
-                    opt.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(opt.ID));
+                    r.Oportunidade.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(r.OportunidadeId));
                 }
 
-                return Ok(oportunidades);
+                return Ok(result);
             }
             catch (OportunidadeException e)
             {
