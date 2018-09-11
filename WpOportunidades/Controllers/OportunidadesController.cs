@@ -183,11 +183,11 @@ namespace WpOportunidades.Controllers
             {
                 var result = await _opDomain.GetUserOportunidadesAsync(token, idUser);
 
-                var enderecos = await _edDomain.GetEnderecosAsync(result.Select(x => x.OportunidadeId).ToList(), token);
+                var enderecos = await _edDomain.GetEnderecosAsync(result.Select(x => x.ID).ToList(), token);
 
                 foreach (var r in result)
                 {
-                    r.Oportunidade.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(r.OportunidadeId));
+                    r.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(r.ID));
                 }
 
                 return Ok(result);

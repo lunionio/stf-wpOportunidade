@@ -172,7 +172,7 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<IEnumerable<UserXOportunidade>> GetUserOportunidadesAsync(string token, int userId)
+        public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
         {
             try
             {
@@ -190,10 +190,10 @@ namespace WpOportunidades.Domains
                 foreach (var r in result)
                 {
                     r.Oportunidade = opts.FirstOrDefault(o => o.ID.Equals(r.OportunidadeId));
-                    r.Status = allStatus.FirstOrDefault(s => s.ID.Equals(r.StatusID));
+                    r.Oportunidade.OptStatus = allStatus.FirstOrDefault(s => s.ID.Equals(r.StatusID));
                 }
 
-                return result;
+                return result.Select(r => r.Oportunidade);
             }
             catch(Exception e)
             {
