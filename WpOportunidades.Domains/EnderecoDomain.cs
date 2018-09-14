@@ -71,8 +71,8 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                //await _segService.ValidateTokenAsync(token);
-                var enderecos = _edRepository.GetAll().Where(e => oportunidadesIds.Contains(e.OportunidadeId));
+                await _segService.ValidateTokenAsync(token);
+                var enderecos = _edRepository.GetList(e => oportunidadesIds.Contains(e.OportunidadeId));
                 return enderecos;
             }
             catch(Exception e)
@@ -85,8 +85,8 @@ namespace WpOportunidades.Domains
         {
             try
             {
-                //await _segService.ValidateTokenAsync(token);
-                var endereco = _edRepository.GetAll().Where(e => e.OportunidadeId.Equals(oportunidadeId)).SingleOrDefault();
+                await _segService.ValidateTokenAsync(token);
+                var endereco = _edRepository.GetList(e => e.OportunidadeId.Equals(oportunidadeId)).SingleOrDefault();
                 return endereco;
             }
             catch (Exception e)

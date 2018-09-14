@@ -17,7 +17,7 @@ namespace WpOportunidades.Controllers
         private readonly OportunidadeDomain _opDomain;
         private readonly EnderecoDomain _edDomain;
 
-        public OportunidadesController(OportunidadeDomain opDomain, EnderecoDomain edDomain)
+        public OportunidadesController([FromServices]OportunidadeDomain opDomain, [FromServices]EnderecoDomain edDomain)
         {
             _opDomain = opDomain;
             _edDomain = edDomain;
@@ -32,13 +32,17 @@ namespace WpOportunidades.Controllers
                 await _edDomain.SaveAsync(op.Endereco, token);
                 return Ok("Oportunidade salva com sucesso.");
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -53,15 +57,19 @@ namespace WpOportunidades.Controllers
             {
                 var op = await _opDomain.UpdateAsync(oportunidade, token);
                 await _edDomain.UpdateAsync(op.Endereco, token);
-                return Ok("Oportnidade atualizada com sucesso.");
+                return Ok("Oportunidade atualizada com sucesso.");
             }
-            catch(OportunidadeException e)
+            catch (InvalidTokenException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -78,13 +86,17 @@ namespace WpOportunidades.Controllers
                 await _edDomain.DeleteAsync(oportunidade.Endereco, token);
                 return Ok("Oportunidade removida com sucesso.");
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -107,13 +119,17 @@ namespace WpOportunidades.Controllers
 
                 return Ok(oportunidades);
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -137,13 +153,17 @@ namespace WpOportunidades.Controllers
 
                 return Ok(oportunidades);
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -161,28 +181,30 @@ namespace WpOportunidades.Controllers
 
                 return Ok(oportunidade);
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
                 return StatusCode(500, "Ocorreu um erro ao tentar recuperar a oportunidade solicitada. Entre em contato com o suporte.");
             }
         }
-        
-        //Não testado
+
         [HttpGet("GetByUser/{idUser:int}/{token}")]
         public async Task<IActionResult> GetOportunidadeByUserIdAsync([FromRoute]string token, [FromRoute]int idUser)
         {
             try
             {
                 var result = await _opDomain.GetUserOportunidadesAsync(token, idUser);
-
                 var enderecos = await _edDomain.GetEnderecosAsync(result.Select(x => x.ID).ToList(), token);
 
                 foreach (var r in result)
@@ -192,13 +214,17 @@ namespace WpOportunidades.Controllers
 
                 return Ok(result);
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (EnderecoException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
@@ -215,13 +241,50 @@ namespace WpOportunidades.Controllers
 
                 return Ok("Usuário foi relacionado a oportunidade com sucesso.");
             }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
             catch (OportunidadeException e)
             {
-                return StatusCode(502, $"{ e.Message } { e.InnerException.Message }");
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
             }
             catch (Exception e)
             {
                 return StatusCode(500, "Ocorreu um erro ao tentar relacionar o usuário à oportunidade. Entre em contato com o suporte.");
+            }
+        }
+        
+        [HttpGet("GetByDate/{idCliente:int}/{date:datetime}/{token}")]
+        public async Task<IActionResult> GetByDate([FromRoute]DateTime date, [FromRoute]string token, [FromRoute]int idCliente)
+        {
+            try
+            {
+                var oportunidades = await _opDomain.GetOportunidadesByDateAsync(date, token, idCliente);
+                var enderecos = await _edDomain.GetEnderecosAsync(oportunidades.Select(o => o.ID).ToList(), token);
+
+                foreach (var o in oportunidades)
+                {
+                    o.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(o.ID));
+                }
+
+                return Ok(oportunidades);
+            }
+            catch(InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (EnderecoException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Ocorreu um erro ao tentar recuperar as oportunidades solicitadas. Entre em contato com o suporte.");
             }
         }
     }

@@ -45,7 +45,11 @@ namespace WpOportunidades.Domains
 
                 return oportunidade;
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível completar a operação.", e);
             }
@@ -61,7 +65,11 @@ namespace WpOportunidades.Domains
 
                 return oportunidade;
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível atualizar a oportunidade.", e);
             }
@@ -80,11 +88,15 @@ namespace WpOportunidades.Domains
             {
                 await _segService.ValidateTokenAsync(token);
 
-                var result = _opRepository.GetAll().Where(o => o.Status != 9 && o.IdCliente.Equals(idCliente)).ToList();
+                var result = _opRepository.GetList(o => o.Status != 9 && o.IdCliente.Equals(idCliente));
 
                 return result;
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível recuperar a lista de oportunidades.", e);
             }
@@ -105,7 +117,11 @@ namespace WpOportunidades.Domains
                 var op = _opRepository.GetList(o => o.ID.Equals(id)).SingleOrDefault();
                 return op;
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível recuperar a oportunidade solicitada.", e);
             }
@@ -120,7 +136,11 @@ namespace WpOportunidades.Domains
                 oportunidade.Ativo = false;
                 _opRepository.Update(oportunidade);
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível remover a oportunidade.", e);
             }
@@ -140,13 +160,16 @@ namespace WpOportunidades.Domains
             {
                 await _segService.ValidateTokenAsync(token);
 
-                var result = _opRepository.GetAll()
-                    .Where(o => o.UsuarioCriacao.Equals(idUsuarioCriacao) 
-                    && o.IdCliente.Equals(idCliente)).ToList().OrderBy(o => o.DataOportunidade);
+                var result = _opRepository.GetList(o => o.UsuarioCriacao.Equals(idUsuarioCriacao) 
+                    && o.IdCliente.Equals(idCliente)).OrderBy(o => o.DataOportunidade);
 
                 return result;
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível recuperar a lista de oportunidades do usuário.", e);
             }
@@ -166,26 +189,35 @@ namespace WpOportunidades.Domains
                 await _segService.ValidateTokenAsync(token);
                 var result = _repository.Add(userXOportunidade);
             }
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
             catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível relacionar o usuário à oportunidade. Entre em contato com o suporte.", e);
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
 
-                var result = _repository.GetAll()
-                    .Where(x => x.UserId.Equals(userId)).ToList();
+                var result = _repository.GetList(x => x.UserId.Equals(userId));
 
                 var ids = result.Select(r => r.OportunidadeId);
-                var opts = _opRepository.GetAll().Where(o => ids.Contains(o.ID)).ToList();
+                var opts = _opRepository.GetList(o => ids.Contains(o.ID));
                 
                 var statusIds = result.Select(r => r.StatusID);
-                var allStatus = new StatusRepository().GetAll().Where(s => statusIds.Contains(s.ID)).ToList();
+                var allStatus = new StatusRepository().GetList(s => statusIds.Contains(s.ID));
 
                 foreach (var r in result)
                 {
@@ -195,9 +227,40 @@ namespace WpOportunidades.Domains
 
                 return result.Select(r => r.Oportunidade);
             }
-            catch(Exception e)
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível listar as oportunidades do usuário. Entre em contato com suporte.", e);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<IEnumerable<Oportunidade>> GetOportunidadesByDateAsync(DateTime date, string token, int idCliente)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+
+                var result = _opRepository.GetList(o => o.IdCliente.Equals(idCliente)
+                    && DateTime.Compare(o.DataOportunidade.Date, date.Date) == 0);
+
+                return result;
+            }
+            catch(InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch(Exception e)
+            {
+                throw new OportunidadeException("Não foi possível listar as oportunidades solicitadas. Entre em contato com o suporte.", e);
             }
         }
     }
