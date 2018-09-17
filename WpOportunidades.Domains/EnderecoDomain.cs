@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using WpOportunidades.Domains.Generics;
 using WpOportunidades.Entities;
 using WpOportunidades.Infrastructure;
 using WpOportunidades.Infrastructure.Exceptions;
@@ -10,7 +10,7 @@ using WpOportunidades.Services;
 
 namespace WpOportunidades.Domains
 {
-    public class EnderecoDomain
+    public class EnderecoDomain : IDomain<Endereco>
     {
         private readonly SegurancaService _segService;
         private readonly EnderecoRepository _edRepository;
@@ -22,15 +22,17 @@ namespace WpOportunidades.Domains
             _edRepository = repository;
         }
 
-        public async Task SaveAsync(Endereco endereco, string token)
+        public async Task<Endereco> SaveAsync(Endereco entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                endereco.DataCriacao = DateTime.UtcNow;
-                endereco.DataEdicao = DateTime.UtcNow;
+                entity.DataCriacao = DateTime.UtcNow;
+                entity.DataEdicao = DateTime.UtcNow;
 
-                _edRepository.Add(endereco);
+                entity.ID = _edRepository.Add(entity);
+
+                return entity;
             }
             catch(Exception e)
             {
@@ -38,13 +40,15 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task UpdateAsync(Endereco endereco, string token)
+        public async Task<Endereco> UpdateAsync(Endereco entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                endereco.DataEdicao = DateTime.UtcNow;
-                _edRepository.Update(endereco);
+                entity.DataEdicao = DateTime.UtcNow;
+                _edRepository.Update(entity);
+
+                return entity;
             }
             catch (Exception e)
             {
@@ -52,14 +56,14 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task DeleteAsync(Endereco endereco, string token)
+        public async Task DeleteAsync(Endereco entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                endereco.Status = 9;
-                endereco.Ativo = false;
-                _edRepository.Update(endereco);
+                entity.Status = 9;
+                entity.Ativo = false;
+                _edRepository.Update(entity);
             }
             catch (Exception e)
             {
@@ -67,7 +71,7 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<IEnumerable<Endereco>> GetEnderecosAsync(List<int> oportunidadesIds, string token)
+        public async Task<IEnumerable<Endereco>> GetAllAsync(List<int> oportunidadesIds, string token)
         {
             try
             {
@@ -81,17 +85,32 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<Endereco> GetEnderecoAsync(int oportunidadeId, string token)
+        public async Task<Endereco> GetByIdAsync(int entityId, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                var endereco = _edRepository.GetList(e => e.OportunidadeId.Equals(oportunidadeId)).SingleOrDefault();
+                var endereco = _edRepository.GetList(e => e.OportunidadeId.Equals(entityId)).SingleOrDefault();
                 return endereco;
             }
             catch (Exception e)
             {
                 throw new EnderecoException("Não foi possível recuperar o endereço.", e);
+            }
+        }
+
+        public async Task<IEnumerable<Endereco>> GetAllAsync(int idCliente, string token)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+                var enderecos = _edRepository.GetList(e => e.IdCliente.Equals(idCliente));
+
+                return enderecos;
+            }
+            catch(Exception e)
+            {
+                throw new EnderecoException("Não foi possível recuperar os endereços.", e);
             }
         }
     }

@@ -109,8 +109,8 @@ namespace WpOportunidades.Controllers
         {
             try
             {
-                var oportunidades = await _opDomain.GetOportunidadesAsync(idCliente, token);
-                var enderecos = await _edDomain.GetEnderecosAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                var oportunidades = await _opDomain.GetAllAsync(idCliente, token);
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
 
                 foreach (var opt in oportunidades)
                 {
@@ -142,9 +142,9 @@ namespace WpOportunidades.Controllers
         {
             try
             {
-                var oportunidades = await _opDomain.GetOportunidadesAsync(idUsuarioCriacao, idCliente, token);
+                var oportunidades = await _opDomain.GetByUsuarioCriacaoIdAsync(idUsuarioCriacao, idCliente, token);
 
-                var enderecos = await _edDomain.GetEnderecosAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
 
                 foreach (var opt in oportunidades)
                 {
@@ -176,8 +176,8 @@ namespace WpOportunidades.Controllers
         {
             try
             {
-                var oportunidade = await _opDomain.GetOportunidadeAsync(id, token);
-                oportunidade.Endereco = await _edDomain.GetEnderecoAsync(oportunidade.ID, token);
+                var oportunidade = await _opDomain.GetByIdAsync(id, token);
+                oportunidade.Endereco = await _edDomain.GetByIdAsync(oportunidade.ID, token);
 
                 return Ok(oportunidade);
             }
@@ -205,7 +205,7 @@ namespace WpOportunidades.Controllers
             try
             {
                 var result = await _opDomain.GetUserOportunidadesAsync(token, idUser);
-                var enderecos = await _edDomain.GetEnderecosAsync(result.Select(x => x.ID).ToList(), token);
+                var enderecos = await _edDomain.GetAllAsync(result.Select(x => x.ID).ToList(), token);
 
                 foreach (var r in result)
                 {
@@ -261,7 +261,7 @@ namespace WpOportunidades.Controllers
             try
             {
                 var oportunidades = await _opDomain.GetOportunidadesByDateAsync(date, token, idCliente);
-                var enderecos = await _edDomain.GetEnderecosAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
 
                 foreach (var o in oportunidades)
                 {

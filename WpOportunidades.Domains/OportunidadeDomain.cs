@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WpOportunidades.Domains.Generics;
 using WpOportunidades.Entities;
 using WpOportunidades.Infrastructure;
 using WpOportunidades.Infrastructure.Exceptions;
@@ -9,7 +10,7 @@ using WpOportunidades.Services;
 
 namespace WpOportunidades.Domains
 {
-    public class OportunidadeDomain
+    public class OportunidadeDomain : IDomain<Oportunidade>
     {
         private readonly SegurancaService _segService;
         private readonly OportunidadeRepository _opRepository;
@@ -26,24 +27,25 @@ namespace WpOportunidades.Domains
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="oportunidade"></param>
+        /// <param name="entity"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
-        public async Task<Oportunidade> SaveAsync(Oportunidade oportunidade, string token)
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task<Oportunidade> SaveAsync(Oportunidade entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                oportunidade.DataCriacao = DateTime.UtcNow;
-                oportunidade.DataEdicao = DateTime.UtcNow;
-                oportunidade.Ativo = true;
+                entity.DataCriacao = DateTime.UtcNow;
+                entity.DataEdicao = DateTime.UtcNow;
+                entity.Ativo = true;
 
-                var result = _opRepository.Add(oportunidade);
+                var result = _opRepository.Add(entity);
 
-                oportunidade.Endereco.OportunidadeId = result;
+                entity.Endereco.OportunidadeId = result;
 
-                return oportunidade;
+                return entity;
             }
             catch (InvalidTokenException e)
             {
@@ -55,15 +57,23 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task<Oportunidade> UpdateAsync(Oportunidade oportunidade, string token)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        /// <exception cref="OportunidadeException"></exception> 
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task<Oportunidade> UpdateAsync(Oportunidade entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                oportunidade.DataEdicao = DateTime.UtcNow;
-                _opRepository.Update(oportunidade);
+                entity.DataEdicao = DateTime.UtcNow;
+                _opRepository.Update(entity);
 
-                return oportunidade;
+                return entity;
             }
             catch (InvalidTokenException e)
             {
@@ -82,7 +92,8 @@ namespace WpOportunidades.Domains
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
-        public async Task<IEnumerable<Oportunidade>> GetOportunidadesAsync(int idCliente, string token)
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task<IEnumerable<Oportunidade>> GetAllAsync(int idCliente, string token)
         {
             try
             {
@@ -105,16 +116,17 @@ namespace WpOportunidades.Domains
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="entityId"></param>
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
-        public async Task<Oportunidade> GetOportunidadeAsync(int id, string token)
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task<Oportunidade> GetByIdAsync(int entityId, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
 
-                var op = _opRepository.GetList(o => o.ID.Equals(id)).SingleOrDefault();
+                var op = _opRepository.GetList(o => o.ID.Equals(entityId)).SingleOrDefault();
                 return op;
             }
             catch (InvalidTokenException e)
@@ -127,14 +139,22 @@ namespace WpOportunidades.Domains
             }
         }
 
-        public async Task DeleteAsync(Oportunidade oportunidade, string token)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        /// <exception cref="OportunidadeException"></exception>
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task DeleteAsync(Oportunidade entity, string token)
         {
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                oportunidade.Status = 9;
-                oportunidade.Ativo = false;
-                _opRepository.Update(oportunidade);
+                entity.Status = 9;
+                entity.Ativo = false;
+                _opRepository.Update(entity);
             }
             catch (InvalidTokenException e)
             {
@@ -154,7 +174,8 @@ namespace WpOportunidades.Domains
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
-        public async Task<IEnumerable<Oportunidade>> GetOportunidadesAsync(int idUsuarioCriacao, int idCliente, string token)
+        /// <exception cref="InvalidTokenException"></exception>
+        public async Task<IEnumerable<Oportunidade>> GetByUsuarioCriacaoIdAsync(int idUsuarioCriacao, int idCliente, string token)
         {
             try
             {
@@ -182,6 +203,8 @@ namespace WpOportunidades.Domains
         /// <param name="token"></param>
         /// <param name="userXOportunidade"></param>
         /// <returns></returns>
+        /// <exception cref="OportunidadeException"></exception>
+        /// <exception cref="InvalidTokenException"></exception>
         public async Task SaveUserXOportunidadeAsync(string token, UserXOportunidade userXOportunidade)
         {
             try
@@ -205,6 +228,8 @@ namespace WpOportunidades.Domains
         /// <param name="token"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
+        /// <exception cref="OportunidadeException"></exception>
+        /// <exception cref="InvalidTokenException"></exception>
         public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
         {
             try
@@ -243,6 +268,8 @@ namespace WpOportunidades.Domains
         /// <param name="date"></param>
         /// <param name="token"></param>
         /// <returns></returns>
+        /// <exception cref="OportunidadeException"></exception>
+        /// <exception cref="InvalidTokenException"></exception>
         public async Task<IEnumerable<Oportunidade>> GetOportunidadesByDateAsync(DateTime date, string token, int idCliente)
         {
             try
