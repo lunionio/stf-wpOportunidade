@@ -126,7 +126,7 @@ namespace WpOportunidades.Domains
             {
                 await _segService.ValidateTokenAsync(token);
 
-                var op = _opRepository.GetList(o => o.ID.Equals(entityId)).SingleOrDefault();
+                var op = _opRepository.GetList(o => o.ID.Equals(entityId) && o.Status != 9).SingleOrDefault();
                 return op;
             }
             catch (InvalidTokenException e)
@@ -182,7 +182,7 @@ namespace WpOportunidades.Domains
                 await _segService.ValidateTokenAsync(token);
 
                 var result = _opRepository.GetList(o => o.UsuarioCriacao.Equals(idUsuarioCriacao) 
-                    && o.IdCliente.Equals(idCliente)).OrderBy(o => o.DataOportunidade);
+                    && o.IdCliente.Equals(idCliente) && o.Status != 9).OrderBy(o => o.DataOportunidade);
 
                 return result;
             }
@@ -239,7 +239,7 @@ namespace WpOportunidades.Domains
                 var result = _repository.GetList(x => x.UserId.Equals(userId));
 
                 var ids = result.Select(r => r.OportunidadeId);
-                var opts = _opRepository.GetList(o => ids.Contains(o.ID));
+                var opts = _opRepository.GetList(o => ids.Contains(o.ID) && o.Status != 9);
                 
                 var statusIds = result.Select(r => r.StatusID);
                 var allStatus = new StatusRepository().GetList(s => statusIds.Contains(s.ID));
@@ -277,7 +277,7 @@ namespace WpOportunidades.Domains
                 await _segService.ValidateTokenAsync(token);
 
                 var result = _opRepository.GetList(o => o.IdCliente.Equals(idCliente)
-                    && DateTime.Compare(o.DataOportunidade.Date, date.Date) == 0);
+                    && DateTime.Compare(o.DataOportunidade.Date, date.Date) == 0 && o.Status != 9);
 
                 return result;
             }
