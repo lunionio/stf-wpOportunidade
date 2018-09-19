@@ -27,10 +27,17 @@ namespace WpOportunidades.Domains
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                entity.DataCriacao = DateTime.UtcNow;
-                entity.DataEdicao = DateTime.UtcNow;
 
-                entity.ID = _edRepository.Add(entity);
+                if (entity.ID == 0)
+                {
+                    entity.DataCriacao = DateTime.UtcNow;
+                    entity.DataEdicao = DateTime.UtcNow;
+                    entity.ID = _edRepository.Add(entity);
+                }
+                else
+                {
+                    entity = await UpdateAsync(entity, token);
+                }
 
                 return entity;
             }

@@ -50,32 +50,32 @@ namespace WpOportunidades.Controllers
             }
         }
 
-        [HttpPut("Update/{token}")]
-        public async Task<IActionResult> UpdateAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
-        {
-            try
-            {
-                var op = await _opDomain.UpdateAsync(oportunidade, token);
-                await _edDomain.UpdateAsync(op.Endereco, token);
-                return Ok("Oportunidade atualizada com sucesso.");
-            }
-            catch (InvalidTokenException e)
-            {
-                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
-            }
-            catch (OportunidadeException e)
-            {
-                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
-            }
-            catch (EnderecoException e)
-            {
-                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, "Ocorreu um erro ao tentar atualizar a oportunidade recebida. Entre em contato com o suporte.");
-            }
-        }
+        //[HttpPut("Update/{token}")]
+        //public async Task<IActionResult> UpdateAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
+        //{
+        //    try
+        //    {
+        //        var op = await _opDomain.UpdateAsync(oportunidade, token);
+        //        await _edDomain.UpdateAsync(op.Endereco, token);
+        //        return Ok("Oportunidade atualizada com sucesso.");
+        //    }
+        //    catch (InvalidTokenException e)
+        //    {
+        //        return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+        //    }
+        //    catch (OportunidadeException e)
+        //    {
+        //        return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+        //    }
+        //    catch (EnderecoException e)
+        //    {
+        //        return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return StatusCode(500, "Ocorreu um erro ao tentar atualizar a oportunidade recebida. Entre em contato com o suporte.");
+        //    }
+        //}
 
         [HttpDelete("Delete/{token}")]
         public async Task<IActionResult> RemoveOportunidadeAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
