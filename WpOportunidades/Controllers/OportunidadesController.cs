@@ -232,7 +232,7 @@ namespace WpOportunidades.Controllers
             }
         }
 
-        [HttpPost("Relates/{token}")]
+        [HttpPost("ApplyUserFor/{token}")]
         public async Task<IActionResult> RelatesUserOportunidadeAsync([FromRoute]string token, [FromBody]UserXOportunidade userXOportunidade)
         {
             try
