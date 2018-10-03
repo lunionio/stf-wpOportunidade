@@ -33,7 +33,9 @@ namespace WpOportunidades
             services.AddTransient<EnderecoRepository>();
             services.AddTransient<OportunidadeDomain>();
             services.AddTransient<EnderecoDomain>();
-            services.AddTransient<UserXOportunidadeRepository>();
+            services.AddTransient<OportunidadeStatusDomain>(); 
+            services.AddTransient<UserXOportunidadeRepository>(); 
+            services.AddTransient<OportunidadeStatusRepository>();
 
             var corsBuilder = new CorsPolicyBuilder();
             corsBuilder.AllowAnyHeader();

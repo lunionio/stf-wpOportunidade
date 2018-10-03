@@ -238,7 +238,7 @@ namespace WpOportunidades.Domains
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
         /// <exception cref="InvalidTokenException"></exception>
-        public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int userId)
+        public async Task<IEnumerable<Oportunidade>> GetUserOportunidadesAsync(string token, int idCliente, int userId)
         {
             try
             {
@@ -247,7 +247,7 @@ namespace WpOportunidades.Domains
                 var result = _repository.GetList(x => x.UserId.Equals(userId));
 
                 var ids = result.Select(r => r.OportunidadeId);
-                var opts = _opRepository.GetList(o => ids.Contains(o.ID) && o.Status != 9);
+                var opts = _opRepository.GetList(o => ids.Contains(o.ID) && o.Status != 9 && o.IdCliente.Equals(idCliente));
                 
                 var statusIds = result.Select(r => r.StatusID);
                 var allStatus = new StatusRepository().GetList(s => statusIds.Contains(s.ID));
@@ -294,6 +294,27 @@ namespace WpOportunidades.Domains
                 throw e;
             }
             catch(Exception e)
+            {
+                throw new OportunidadeException("Não foi possível listar as oportunidades solicitadas. Entre em contato com o suporte.", e);
+            }
+        }
+
+        public async Task<IEnumerable<Oportunidade>> GetOportunidadesByEmpresaAsync(int idEmpresa, int idCliente, string token)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+
+                var result = _opRepository.GetList(o => o.IdEmpresa.Equals(idEmpresa) 
+                        && o.IdCliente.Equals(idCliente) && o.Status != 9);
+
+                return result;
+            }
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
             {
                 throw new OportunidadeException("Não foi possível listar as oportunidades solicitadas. Entre em contato com o suporte.", e);
             }

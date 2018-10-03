@@ -19,7 +19,13 @@ namespace WpOportunidades.Entities
         public decimal Valor { get; set; }
         public int Quantidade { get; set; }
         public Endereco Endereco { get; set; }
+        public int IdEmpresa { get; set; }
+        public OportunidadeStatus OportunidadeStatus { get; set; }
+        public int OportunidadeStatusID { get; set; }
 
+        /// <summary>
+        /// Usado para a listagem das oportunidades do usuário
+        /// </summary>
         [NotMapped]
         public Status OptStatus { get; set; }
     }

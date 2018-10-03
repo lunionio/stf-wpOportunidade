@@ -16,11 +16,13 @@ namespace WpOportunidades.Controllers
     {
         private readonly OportunidadeDomain _opDomain;
         private readonly EnderecoDomain _edDomain;
+        private readonly OportunidadeStatusDomain _sDomain;
 
-        public OportunidadesController([FromServices]OportunidadeDomain opDomain, [FromServices]EnderecoDomain edDomain)
+        public OportunidadesController([FromServices]OportunidadeDomain opDomain, [FromServices]EnderecoDomain edDomain, [FromServices]OportunidadeStatusDomain sDomain)
         {
             _opDomain = opDomain;
             _edDomain = edDomain;
+            _sDomain = sDomain;
         }
 
         [HttpPost("Save/{token}")]
@@ -30,6 +32,7 @@ namespace WpOportunidades.Controllers
             {
                 var op = await _opDomain.SaveAsync(oportunidade, token);
                 await _edDomain.SaveAsync(op.Endereco, token);
+
                 return Ok("Oportunidade salva com sucesso.");
             }
             catch (InvalidTokenException e)
@@ -77,13 +80,14 @@ namespace WpOportunidades.Controllers
         //    }
         //}
 
-        [HttpDelete("Delete/{token}")]
+        [HttpDelete("Delete/{token}")]//Testar por último
         public async Task<IActionResult> RemoveOportunidadeAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
         {
             try
             {
                 await _opDomain.DeleteAsync(oportunidade, token);
                 await _edDomain.DeleteAsync(oportunidade.Endereco, token);
+
                 return Ok("Oportunidade removida com sucesso.");
             }
             catch (InvalidTokenException e)
@@ -110,11 +114,17 @@ namespace WpOportunidades.Controllers
             try
             {
                 var oportunidades = await _opDomain.GetAllAsync(idCliente, token);
-                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
 
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
                 foreach (var opt in oportunidades)
                 {
                     opt.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(opt.ID));
+                }
+
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in oportunidades)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
                 }
 
                 return Ok(oportunidades);
@@ -145,10 +155,15 @@ namespace WpOportunidades.Controllers
                 var oportunidades = await _opDomain.GetByUsuarioCriacaoIdAsync(idUsuarioCriacao, idCliente, token);
 
                 var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
-
                 foreach (var opt in oportunidades)
                 {
                     opt.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(opt.ID));
+                }
+
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in oportunidades)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
                 }
 
                 return Ok(oportunidades);
@@ -178,6 +193,8 @@ namespace WpOportunidades.Controllers
             {
                 var oportunidade = await _opDomain.GetByIdAsync(id, token);
                 oportunidade.Endereco = await _edDomain.GetByIdAsync(oportunidade.ID, token);
+                oportunidade.OportunidadeStatus = (await _sDomain.GetAllAsync(oportunidade.IdCliente, token))
+                            .FirstOrDefault(s => s.ID.Equals(oportunidade.OportunidadeStatusID));
 
                 return Ok(oportunidade);
             }
@@ -199,17 +216,23 @@ namespace WpOportunidades.Controllers
             }
         }
 
-        [HttpGet("GetByUser/{idUser:int}/{token}")]
-        public async Task<IActionResult> GetOportunidadeByUserIdAsync([FromRoute]string token, [FromRoute]int idUser)
+        [HttpGet("GetByUser/{idCliente:int}/{idUser:int}/{token}")] //Testar
+        public async Task<IActionResult> GetOportunidadeByUserIdAsync([FromRoute]string token, [FromRoute]int idCliente, [FromRoute]int idUser)
         {
             try
             {
-                var result = await _opDomain.GetUserOportunidadesAsync(token, idUser);
-                var enderecos = await _edDomain.GetAllAsync(result.Select(x => x.ID).ToList(), token);
+                var result = await _opDomain.GetUserOportunidadesAsync(token, idCliente, idUser);
 
+                var enderecos = await _edDomain.GetAllAsync(result.Select(x => x.ID).ToList(), token);
                 foreach (var r in result)
                 {
                     r.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(r.ID));
+                }
+
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in result)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
                 }
 
                 return Ok(result);
@@ -261,16 +284,61 @@ namespace WpOportunidades.Controllers
             try
             {
                 var oportunidades = await _opDomain.GetOportunidadesByDateAsync(date, token, idCliente);
-                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
 
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
                 foreach (var o in oportunidades)
                 {
                     o.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(o.ID));
                 }
 
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in oportunidades)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
+                }
+
                 return Ok(oportunidades);
             }
             catch(InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (EnderecoException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Ocorreu um erro ao tentar recuperar as oportunidades solicitadas. Entre em contato com o suporte.");
+            }
+        }
+
+        [HttpGet("GetByEmpresa/{idEmpresa:int}/{idCliente:int}/{token}")]
+        public async Task<IActionResult> GetByEmpresaId([FromRoute]int idEmpresa, [FromRoute]int idCliente, [FromRoute]string token)
+        {
+            try
+            {
+                var oportunidades = await _opDomain.GetOportunidadesByEmpresaAsync(idEmpresa, idCliente, token);
+
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                foreach (var o in oportunidades)
+                {
+                    o.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(o.ID));
+                }
+
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in oportunidades)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
+                }
+
+                return Ok(oportunidades);
+            }
+            catch (InvalidTokenException e)
             {
                 return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
             }
