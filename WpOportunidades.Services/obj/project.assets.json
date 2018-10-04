@@ -2384,7 +2384,7 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "EdyFK6J3FS9hE82zsL23y7sFVYFeAckPsNmS7D3lGw0yLVLHarLVlZFfJZ73lGGu+ivGzxdons91fJh3dWugUw==",
+      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
@@ -3463,23 +3463,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dev01\\.nuget\\packages\\": {},
+    "C:\\Users\\gilbe_000\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\wpoportunidade\\WpOportunidades.Services\\WpOportunidades.Services.csproj",
+      "projectUniqueName": "C:\\Work\\WpOportunidade\\WpOportunidades.Services\\WpOportunidades.Services.csproj",
       "projectName": "WpOportunidades.Services",
-      "projectPath": "C:\\Work\\wpoportunidade\\WpOportunidades.Services\\WpOportunidades.Services.csproj",
-      "packagesPath": "C:\\Users\\Dev01\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\wpoportunidade\\WpOportunidades.Services\\obj\\",
+      "projectPath": "C:\\Work\\WpOportunidade\\WpOportunidades.Services\\WpOportunidades.Services.csproj",
+      "packagesPath": "C:\\Users\\gilbe_000\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\WpOportunidade\\WpOportunidades.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dev01\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gilbe_000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3492,8 +3492,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Work\\wpoportunidade\\WpOportunidades.Infrastructure\\WpOportunidades.Infrastructure.csproj": {
-              "projectPath": "C:\\Work\\wpoportunidade\\WpOportunidades.Infrastructure\\WpOportunidades.Infrastructure.csproj"
+            "C:\\Work\\WpOportunidade\\WpOportunidades.Infrastructure\\WpOportunidades.Infrastructure.csproj": {
+              "projectPath": "C:\\Work\\WpOportunidade\\WpOportunidades.Infrastructure\\WpOportunidades.Infrastructure.csproj"
             }
           }
         }

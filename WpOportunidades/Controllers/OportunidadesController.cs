@@ -80,7 +80,7 @@ namespace WpOportunidades.Controllers
         //    }
         //}
 
-        [HttpDelete("Delete/{token}")]//Testar por último
+        [HttpDelete("Delete/{token}")]
         public async Task<IActionResult> RemoveOportunidadeAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
         {
             try
@@ -216,7 +216,7 @@ namespace WpOportunidades.Controllers
             }
         }
 
-        [HttpGet("GetByUser/{idCliente:int}/{idUser:int}/{token}")] //Testar
+        [HttpGet("GetByUser/{idCliente:int}/{idUser:int}/{token}")]
         public async Task<IActionResult> GetOportunidadeByUserIdAsync([FromRoute]string token, [FromRoute]int idCliente, [FromRoute]int idUser)
         {
             try
@@ -353,6 +353,32 @@ namespace WpOportunidades.Controllers
             catch (Exception)
             {
                 return StatusCode(500, "Ocorreu um erro ao tentar recuperar as oportunidades solicitadas. Entre em contato com o suporte.");
+            }
+        }
+
+        [HttpGet("GetByOpt/{idOpt:int}/{token}")]
+        public async Task<IActionResult> GetUsersByOportunidadeAsync([FromRoute]int idOpt, [FromRoute]string token)
+        {
+            try
+            {
+                var users = await _opDomain.GetUsersAsync(idOpt, token);
+                return Ok(users);
+            }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (ServiceException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Ocorreu um erro ao tentar recuperar os usuários solicitados. Entre em contato com o suporte.");
             }
         }
     }

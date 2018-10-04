@@ -10,9 +10,9 @@ C:\Users\Dev01\Documents\Visual Studio 2017\Projects\WpOportunidades\WpOportunid
 C:\Work\wpoportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.deps.json
 C:\Work\wpoportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
 C:\Work\wpoportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
-C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csprojAssemblyReference.cache
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csproj.CoreCompileInputs.cache
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfoInputs.cache
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfo.cs
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Work\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csprojAssemblyReference.cache

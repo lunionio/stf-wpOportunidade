@@ -681,23 +681,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dev01\\.nuget\\packages\\": {},
+    "C:\\Users\\gilbe_000\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Work\\wpoportunidade\\WpOportunidades.Entities\\WpOportunidades.Entities.csproj",
+      "projectUniqueName": "C:\\Work\\WpOportunidade\\WpOportunidades.Entities\\WpOportunidades.Entities.csproj",
       "projectName": "WpOportunidades.Entities",
-      "projectPath": "C:\\Work\\wpoportunidade\\WpOportunidades.Entities\\WpOportunidades.Entities.csproj",
-      "packagesPath": "C:\\Users\\Dev01\\.nuget\\packages\\",
-      "outputPath": "C:\\Work\\wpoportunidade\\WpOportunidades.Entities\\obj\\",
+      "projectPath": "C:\\Work\\WpOportunidade\\WpOportunidades.Entities\\WpOportunidades.Entities.csproj",
+      "packagesPath": "C:\\Users\\gilbe_000\\.nuget\\packages\\",
+      "outputPath": "C:\\Work\\WpOportunidade\\WpOportunidades.Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Dev01\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gilbe_000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
