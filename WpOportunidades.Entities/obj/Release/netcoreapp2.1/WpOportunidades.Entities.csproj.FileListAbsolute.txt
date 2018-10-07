@@ -1,0 +1,9 @@
+C:\work\wpoportunidade\WpOportunidades.Entities\bin\Release\netcoreapp2.1\WpOportunidades.Entities.deps.json
+C:\work\wpoportunidade\WpOportunidades.Entities\bin\Release\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\work\wpoportunidade\WpOportunidades.Entities\bin\Release\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.csprojAssemblyReference.cache
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.csproj.CoreCompileInputs.cache
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfoInputs.cache
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfo.cs
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\work\wpoportunidade\WpOportunidades.Entities\obj\Release\netcoreapp2.1\WpOportunidades.Entities.pdb

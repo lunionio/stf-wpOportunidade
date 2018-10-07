@@ -1,0 +1,12 @@
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\bin\Release\netcoreapp2.1\WpOportunidades.Infrastructure.deps.json
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\bin\Release\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\bin\Release\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\bin\Release\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\bin\Release\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.csprojAssemblyReference.cache
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.csproj.CoreCompileInputs.cache
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.AssemblyInfoInputs.cache
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.AssemblyInfo.cs
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.csproj.CopyComplete
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\work\wpoportunidade\WpOportunidades.Infrastructure\obj\Release\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
