@@ -9,6 +9,7 @@ namespace WpOportunidades.Infrastructure
         public DbSet<Oportunidade> Oportunidades { get; set; }
         public DbSet<UserXOportunidade> UserXOportunidades { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<OportunidadeStatus> OportunidadeStatuses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

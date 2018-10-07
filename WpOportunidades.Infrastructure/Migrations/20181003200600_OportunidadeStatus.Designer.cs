@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WpOportunidades.Infrastructure;
 
 namespace WpOportunidades.Infrastructure.Migrations
 {
     [DbContext(typeof(WpOportunidadesContext))]
-    partial class WpOportunidadesContextModelSnapshot : ModelSnapshot
+    [Migration("20181003200600_OportunidadeStatus")]
+    partial class OportunidadeStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -135,8 +137,6 @@ namespace WpOportunidades.Infrastructure.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("IdCliente");
 
                     b.Property<string>("Name");
 
