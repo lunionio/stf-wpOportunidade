@@ -14,12 +14,24 @@ namespace WpOportunidades
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
-        }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            MainAsync().Wait();
+
+        }
+        static async Task MainAsync()
+        {
+            var url = await AuxNotStatic.GetInfoMotorAux("WpOportunidades", 1);
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseUrls(url.Url)
+                //.UseUrls("http://localhost:5000")
+                .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseUrls("http://localhost:5330");
+                .UseApplicationInsights()
+                .Build();
+
+            host.Run();
+        }
     }
 }

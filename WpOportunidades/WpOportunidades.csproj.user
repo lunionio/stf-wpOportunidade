@@ -6,5 +6,6 @@
   <PropertyGroup>
     <ActiveDebugProfile>WpOportunidades</ActiveDebugProfile>
     <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
+    <ShowAllFiles>false</ShowAllFiles>
   </PropertyGroup>
 </Project>
