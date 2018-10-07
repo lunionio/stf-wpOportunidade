@@ -28,7 +28,6 @@ namespace WpOportunidades
                 //.UseUrls("http://localhost:5000")
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseApplicationInsights()
                 .Build();
 
             host.Run();
