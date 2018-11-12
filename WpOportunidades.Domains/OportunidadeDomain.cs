@@ -218,7 +218,15 @@ namespace WpOportunidades.Domains
             try
             {
                 await _segService.ValidateTokenAsync(token);
-                var result = _repository.Add(userXOportunidade);
+
+                if (userXOportunidade.ID == 0)
+                {
+                    var result = _repository.Add(userXOportunidade);
+                }
+                else
+                {
+                    _repository.Update(userXOportunidade);
+                }
             }
             catch (InvalidTokenException e)
             {

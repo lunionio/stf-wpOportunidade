@@ -31,9 +31,9 @@ namespace WpOportunidades.Controllers
             try
             {
                 var op = await _opDomain.SaveAsync(oportunidade, token);
-                await _edDomain.SaveAsync(op.Endereco, token);
+                op.Endereco = await _edDomain.SaveAsync(op.Endereco, token);
 
-                return Ok("Oportunidade salva com sucesso.");
+                return Ok(op);
             }
             catch (InvalidTokenException e)
             {
