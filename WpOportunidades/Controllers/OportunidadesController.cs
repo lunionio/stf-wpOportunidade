@@ -80,7 +80,7 @@ namespace WpOportunidades.Controllers
         //    }
         //}
 
-        [HttpDelete("Delete/{token}")]
+        [HttpPost("Delete/{token}")]
         public async Task<IActionResult> RemoveOportunidadeAsync([FromRoute]string token, [FromBody]Oportunidade oportunidade)
         {
             try
