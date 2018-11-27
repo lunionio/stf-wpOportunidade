@@ -14,6 +14,7 @@ namespace WpOportunidades.Entities
         public int NumeroLocal { get; set; }
         public string Complemento { get; set; }
         public int IdUsuario { get; set; }
+        public string Uf { get; set; }
 
         public Oportunidade Oportunidade { get; set; }
         public int OportunidadeId { get; set; }
