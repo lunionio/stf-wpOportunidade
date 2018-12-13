@@ -271,7 +271,10 @@ namespace WpOportunidades.Controllers
                 if (userXOportunidade.StatusID == 1) //Aprovado
                 {
                     var op = await _opDomain.GetByIdAsync(userXOportunidade.OportunidadeId, token);
-                    await _emailHandler.EnviarEmailAsync(token, op, userXOportunidade);
+                    if (op != null)
+                    {
+                        await _emailHandler.EnviarEmailAsync(token, op, userXOportunidade);
+                    }
                 }
 
                 return Ok("Usuário foi relacionado a oportunidade com sucesso.");
