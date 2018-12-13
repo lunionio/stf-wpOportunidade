@@ -37,7 +37,8 @@ namespace WpOportunidades.Controllers
                 var op = await _opDomain.SaveAsync(oportunidade, token);
                 op.Endereco = await _edDomain.SaveAsync(op.Endereco, token);
 
-                await _emailHandler.EnviarEmailAsync(token, op);
+                if(oportunidade.ID == 0)
+                    await _emailHandler.EnviarEmailAsync(token, op);
 
                 return Ok(op);
             }
