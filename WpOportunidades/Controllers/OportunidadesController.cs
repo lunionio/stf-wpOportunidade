@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WpOportunidades.Domains;
 using WpOportunidades.Entities;
+using WpOportunidades.Helper;
 using WpOportunidades.Infrastructure.Exceptions;
 
 namespace WpOportunidades.Controllers
@@ -17,12 +18,15 @@ namespace WpOportunidades.Controllers
         private readonly OportunidadeDomain _opDomain;
         private readonly EnderecoDomain _edDomain;
         private readonly OportunidadeStatusDomain _sDomain;
+        private readonly EmailHandler _emailHandler;
 
-        public OportunidadesController([FromServices]OportunidadeDomain opDomain, [FromServices]EnderecoDomain edDomain, [FromServices]OportunidadeStatusDomain sDomain)
+        public OportunidadesController([FromServices]OportunidadeDomain opDomain, 
+            [FromServices]EnderecoDomain edDomain, [FromServices]OportunidadeStatusDomain sDomain, [FromServices]EmailHandler emailHandler)
         {
             _opDomain = opDomain;
             _edDomain = edDomain;
             _sDomain = sDomain;
+            _emailHandler = emailHandler;
         }
 
         [HttpPost("Save/{token}")]
@@ -32,6 +36,8 @@ namespace WpOportunidades.Controllers
             {
                 var op = await _opDomain.SaveAsync(oportunidade, token);
                 op.Endereco = await _edDomain.SaveAsync(op.Endereco, token);
+
+                await _emailHandler.EnviarEmailAsync(token, op);
 
                 return Ok(op);
             }
@@ -88,7 +94,7 @@ namespace WpOportunidades.Controllers
                 await _opDomain.DeleteAsync(oportunidade, token);
                 await _edDomain.DeleteAsync(oportunidade.Endereco, token);
 
-                return Ok("Oportunidade removida com sucesso.");
+                return Ok(true);
             }
             catch (InvalidTokenException e)
             {

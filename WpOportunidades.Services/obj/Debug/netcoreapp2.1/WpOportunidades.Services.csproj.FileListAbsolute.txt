@@ -26,3 +26,5 @@ C:\Work\wpoportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportu
 C:\Work\wpoportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.csproj.CopyComplete
 C:\Work\wpoportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.dll
 C:\Work\wpoportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Work\WpOportunidade\WpOportunidades.Services\bin\Debug\netcoreapp2.1\Newtonsoft.Json.dll
+C:\Work\WpOportunidade\WpOportunidades.Services\bin\Debug\netcoreapp2.1\Newtonsoft.Json.xml

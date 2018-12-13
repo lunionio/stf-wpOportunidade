@@ -9,7 +9,8 @@
       "WpOportunidades.Services/1.0.0": {
         "dependencies": {
           "RestSharp": "106.4.2",
-          "WpOportunidades.Infrastructure": "1.0.0"
+          "WpOportunidades.Infrastructure": "1.0.0",
+          "Newtonsoft.Json": "11.0.0.0"
         },
         "runtime": {
           "WpOportunidades.Services.dll": {}
@@ -528,6 +529,14 @@
         "runtime": {
           "WpOportunidades.Infrastructure.dll": {}
         }
+      },
+      "Newtonsoft.Json/11.0.0.0": {
+        "runtime": {
+          "Newtonsoft.Json.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.2.21924"
+          }
+        }
       }
     }
   },
@@ -922,6 +931,11 @@
     },
     "WpOportunidades.Infrastructure/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/11.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

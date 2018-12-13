@@ -15,13 +15,13 @@ namespace WpOportunidades
         public static void Main(string[] args)
         {
 
-            MainAsync().Wait();
+            MainAsync(args).Wait();
 
         }
-        static async Task MainAsync()
+        static async Task MainAsync(string[] args)
         {
             var url = await AuxNotStatic.GetInfoMotorAux("WpOportunidades", 1);
-            var host = new WebHostBuilder()
+            var host = WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseUrls(url.Url)

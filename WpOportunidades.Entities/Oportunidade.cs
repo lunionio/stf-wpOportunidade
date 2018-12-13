@@ -28,5 +28,8 @@ namespace WpOportunidades.Entities
         /// </summary>
         [NotMapped]
         public Status OptStatus { get; set; }
+        
+        [NotMapped]
+        public string EmailEmpresa { get; set; }
     }
 }

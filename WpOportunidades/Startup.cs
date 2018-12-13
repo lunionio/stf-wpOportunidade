@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WpOportunidades.Domains;
+using WpOportunidades.Helper;
 using WpOportunidades.Infrastructure;
 using WpOportunidades.Services;
 
@@ -36,6 +37,9 @@ namespace WpOportunidades
             services.AddTransient<OportunidadeStatusDomain>(); 
             services.AddTransient<UserXOportunidadeRepository>(); 
             services.AddTransient<OportunidadeStatusRepository>();
+            services.AddTransient<EmailHandler>();
+            services.AddTransient<ConfiguracaoService>();
+            services.AddTransient<EmailService>();
 
             var corsBuilder = new CorsPolicyBuilder();
             corsBuilder.AllowAnyHeader();

@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180906193909_Initial.cs" />
     <Compile Remove="Migrations\20180910173400_ColunaIdUsuarioEmEndereco.cs" />
+    <Compile Remove="Migrations\20181213102503_LocalOpt.cs" />
   </ItemGroup>
 
   <ItemGroup>

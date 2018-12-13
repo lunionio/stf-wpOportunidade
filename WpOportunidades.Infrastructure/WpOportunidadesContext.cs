@@ -39,6 +39,7 @@ namespace WpOportunidades.Infrastructure
                 end.Property(e => e.Bairro).HasColumnType("varchar(20)");
                 end.Property(e => e.Local).HasColumnType("varchar(50)");
                 end.Property(e => e.Complemento).HasColumnType("varchar(100)");
+                end.Property(e => e.LocalOportunidade).HasColumnType("varchar(100)");
             });
         }
     }
