@@ -66,6 +66,53 @@ namespace WpOportunidades.Helper
             }
         }
 
+        public async Task EnviarEmailAsync(string token, Oportunidade oportunidade, UserXOportunidade userXOportunidade)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+
+                var (emailConfigs, emailConstants) = GetConfiguration();
+                var content = await System.IO.File.ReadAllTextAsync("wwwroot/Match-Opt.html");
+
+                foreach (var item in emailConstants)
+                {
+                    var text = string.Empty;
+
+                    if ("endereco".Equals(item.Key.ToLower()))
+                    {
+                        text = oportunidade.Endereco.GetType().GetProperty("Descricao").GetValue(oportunidade.Endereco, null).ToString();
+                    }
+                    if ("nomecontratado".Equals(item.Key.ToLower()))
+                    {
+                        text = userXOportunidade.GetType().GetProperty("NomeContratado").GetValue(userXOportunidade, null).ToString();
+                    }
+                    else
+                    {
+                        text = oportunidade.GetType().GetProperty(item.Key).GetValue(oportunidade, null).ToString();
+                    }
+
+                    if (!string.IsNullOrEmpty(text))
+                        content = content.Replace(item.Value, text);
+                }
+
+                var configuracoes = await _configService.GetConfiguracoesAsync(oportunidade.IdCliente, oportunidade.UsuarioCriacao);
+                var sender = emailConfigs.GetValue<string>("Sender");
+
+                var configuracao = configuracoes.Where(c => c.Chave.Equals(sender)).SingleOrDefault();
+
+                if (!string.IsNullOrEmpty(oportunidade.EmailEmpresa))
+                {
+                    var emailToClient = new Email(content, $"Oportunidade: { oportunidade.Nome }", configuracao.Valor, oportunidade.EmailEmpresa, oportunidade.IdCliente);
+                    await _emailService.EnviarEmailAsync(emailToClient, oportunidade.IdCliente, oportunidade.UsuarioCriacao);
+                }
+            }
+            catch (Exception e)
+            {
+                //Erro ao enviar e-mail não impacta no processo
+            }
+        }
+
         private (IConfigurationSection emailConfigs,
             IEnumerable<IConfigurationSection> emailConstants) GetConfiguration()
         {

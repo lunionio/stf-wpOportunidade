@@ -268,6 +268,12 @@ namespace WpOportunidades.Controllers
             {
                 await _opDomain.SaveUserXOportunidadeAsync(token, userXOportunidade);
 
+                if (userXOportunidade.StatusID == 1) //Aprovado
+                {
+                    var op = await _opDomain.GetByIdAsync(userXOportunidade.OportunidadeId, token);
+                    await _emailHandler.EnviarEmailAsync(token, op, userXOportunidade);
+                }
+
                 return Ok("Usuário foi relacionado a oportunidade com sucesso.");
             }
             catch (InvalidTokenException e)

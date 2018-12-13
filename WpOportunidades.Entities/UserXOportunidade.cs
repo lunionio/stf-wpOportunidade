@@ -13,5 +13,14 @@ namespace WpOportunidades.Entities
         public Oportunidade Oportunidade { get; set; }
         public Status Status { get; set; }
         public int StatusID { get; set; }
+
+        [NotMapped]
+        public string EmailContratante { get; set; }
+
+        [NotMapped]
+        public string EmailContratado { get; set; }
+
+        [NotMapped]
+        public string NomeContratado { get; set; }
     }
 }
