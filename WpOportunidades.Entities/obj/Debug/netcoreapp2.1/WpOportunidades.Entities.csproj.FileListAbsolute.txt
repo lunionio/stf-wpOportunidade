@@ -16,3 +16,12 @@ C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportu
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
 C:\Work\wpoportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
 C:\Work\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csprojAssemblyReference.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.deps.json
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csprojAssemblyReference.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.csproj.CoreCompileInputs.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfoInputs.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.AssemblyInfo.cs
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Entities\obj\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb

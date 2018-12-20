@@ -364,5 +364,41 @@ namespace WpOportunidades.Domains
                 throw new OportunidadeException("Não foi possível listar os usuários da oportunidade. Entre em contato com suporte.", e);
             }
         }
+
+        public async Task<IEnumerable<UserXOportunidade>> GetByStatusAndUserAsync(int userId, int statusId, string token)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+
+                var result = _repository.GetList(x => x.UserId.Equals(userId) && x.StatusID.Equals(statusId));
+
+                var opIds = result.Select(x => x.OportunidadeId);
+                var oportunidades = _opRepository.GetList(o => opIds.Contains(o.ID));
+
+                var statusIds = result.Select(r => r.StatusID);
+                var allStatus = new StatusRepository().GetList(s => statusIds.Contains(s.ID));
+
+                foreach (var item in result)
+                {
+                    item.Oportunidade = oportunidades.FirstOrDefault(o => o.ID.Equals(item.OportunidadeId));
+                    item.Status = allStatus.FirstOrDefault(s => s.ID.Equals(item.StatusID));
+                }
+
+                return result;
+            }
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (ServiceException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new OportunidadeException("Não foi possível listar as oportunidades. Entre em contato com suporte.", e);
+            }
+        }
     }
 }

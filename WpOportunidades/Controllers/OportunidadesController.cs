@@ -397,5 +397,31 @@ namespace WpOportunidades.Controllers
                 return StatusCode(500, "Ocorreu um erro ao tentar recuperar os usuários solicitados. Entre em contato com o suporte.");
             }
         }
+
+        [HttpGet("GetByStatus/{userId:int}/{statusId:int}/{token}")]
+        public async Task<IActionResult> GetByUserAndStatusIdAsync([FromRoute]int userId, [FromRoute]int statusId, [FromRoute]string token)
+        {
+            try
+            {
+                var oprtunidades = await _opDomain.GetByStatusAndUserAsync(userId, statusId, token);
+                return Ok(oprtunidades);
+            }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (ServiceException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Ocorreu um erro ao tentar recuperar os usuários solicitados. Entre em contato com o suporte.");
+            }
+        }
     }
 }

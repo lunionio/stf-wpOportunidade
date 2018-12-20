@@ -1,16 +1,16 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "93b1cb0bab5470a058c62be04429e00baf6c916f"
+    "signature": "1c97c85f92a263669d0656854b221d338c093a1a"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.1": {
       "WpOportunidades.Services/1.0.0": {
         "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
           "RestSharp": "106.4.2",
-          "WpOportunidades.Infrastructure": "1.0.0",
-          "Newtonsoft.Json": "11.0.0.0"
+          "WpOportunidades.Infrastructure": "1.0.0"
         },
         "runtime": {
           "WpOportunidades.Services.dll": {}
@@ -203,6 +203,14 @@
           "runtime/win/lib/_._": {
             "rid": "win",
             "assetType": "runtime"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
           }
         }
       },
@@ -529,14 +537,6 @@
         "runtime": {
           "WpOportunidades.Infrastructure.dll": {}
         }
-      },
-      "Newtonsoft.Json/11.0.0.0": {
-        "runtime": {
-          "Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.2.21924"
-          }
-        }
       }
     }
   },
@@ -549,35 +549,35 @@
     "Microsoft.EntityFrameworkCore/2.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-72l8hbaJ5cXxZLCFeo46MDnvU8XJiDRNh1YQPzAlqVAlQrUwSVojYbJyOE7vbWqsb8rRqQYJ6NsmgPdUv/NKzw==",
+      "sha512": "sha512-Rt2SIF3LPQfBzQYbhOv8LwQKy7UkZh+zJcls5eLTOlbPahLXH7IWCkk3mQpzTvljG55vkhzNcOjzrVLcO0uICA==",
       "path": "microsoft.entityframeworkcore/2.1.4",
       "hashPath": "microsoft.entityframeworkcore.2.1.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Abstractions/2.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5Vc1zdCq7p+E/8ndJnTKHebJeqSC/1gb4hXDPi7UHdqURAxWl3lZV5+79x/dSfO/P6n/sEz5fURYGOMDoreXUA==",
+      "sha512": "sha512-3djJy9gM2PZQFz6NHPSVzAN8azBu7afehDLwGkCR8yCMVhNzkkVdT/JZMfsSzuNZ302wIFWbzEYSAEI6lBddMA==",
       "path": "microsoft.entityframeworkcore.abstractions/2.1.4",
       "hashPath": "microsoft.entityframeworkcore.abstractions.2.1.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Analyzers/2.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cYjXickepORM4UmNdqdZ3l74xhG5OHWMDxsFlqHJGm0qxLAHv5GAI2dKkkGslrjyaPYnfRW3JhAWubBWBt0XUg==",
+      "sha512": "sha512-VEyuULTq48tbPjwLXo9j5WdObg0ViHYI4CwvdaYG23r13wIP2MJqpn4Nc9HpUQPPxGDqL2FO9HRvSY3Xufgtcw==",
       "path": "microsoft.entityframeworkcore.analyzers/2.1.4",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.1.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/2.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cn/sEABCjVEp+Ji8LaDjGc7kjD2fJ9y46GL7rTnP1imWmdEYr3eL1oTNKOukMCNwjEGf1pZid0f0LKXaWBGbHw==",
+      "sha512": "sha512-Ekl7Kjo5YrPahQ1FJJVSd1ZTnmbtCPdkbI8CMZfbGBQMtrYgBttHxE4bTA4+Ys69+BTRMc/AdWoCfRyioxZA+w==",
       "path": "microsoft.entityframeworkcore.relational/2.1.4",
       "hashPath": "microsoft.entityframeworkcore.relational.2.1.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.SqlServer/2.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pVQpP3bOv26GLn6Ff5ocS1ibP+kqkjh6Wz14xdxLIVIQBVp+eb/3jaHqkvBJS+fXMfLyyAnHCNALyaTvp9bRZA==",
+      "sha512": "sha512-f5Zl534MVOrVhe5kAYE9eFN+4AYW6IUw7+i5NeNQ+8eJQpAjCW5HlzGBkFVerHwzkjcM/Z3tlqMTzrdpO+f0HA==",
       "path": "microsoft.entityframeworkcore.sqlserver/2.1.4",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.1.4.nupkg.sha512"
     },
@@ -619,7 +619,7 @@
     "Microsoft.Extensions.DependencyInjection/2.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-2nshYaLTn73Ie+/yTkb7EZIXwQeFIXsYCBy/jSY9bMayYykGNjdWa25frayhuPAGVbZpEgfgp3d4JRVEuVyEqQ==",
+      "sha512": "sha512-ZPFcDUbSwaEVWMyef8+9GqiTAghHX+eLeIEW032i4LDFAdyM4J4brV0UzChlKtClT7cuip/Of6G+veDnO3/bCw==",
       "path": "microsoft.extensions.dependencyinjection/2.1.1",
       "hashPath": "microsoft.extensions.dependencyinjection.2.1.1.nupkg.sha512"
     },
@@ -665,17 +665,24 @@
       "path": "microsoft.win32.registry/4.5.0",
       "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
     },
+    "Newtonsoft.Json/12.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
+    },
     "Remotion.Linq/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-fK/76UmpC0FXBlGDFVPLJHQlDLYnGC+XY3eoDgCgbtrhi0vzbXDQ3n/IYHhqSKqXQfGw/u04A1drWs7rFVkRjw==",
+      "sha512": "sha512-twDAH8dAXXCAf3sRv1Tf94u66eEHvgU75hfn1nn2v4fSWXD50XoDOAk8WpSrbViNuMkB4kN1ElnOGm1c519IHg==",
       "path": "remotion.linq/2.2.0",
       "hashPath": "remotion.linq.2.2.0.nupkg.sha512"
     },
     "RestSharp/106.4.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-anYHAsl6ERg0cpa0+EhvqC+2WU2Gr4bhpnjSCFWTnWcv1dYHv5v/yfwvfSAsNgXAqK4F7Hqq7Xj7oOIUKHrsLw==",
+      "sha512": "sha512-/aJrLfq0sUtoibM9ItU6aDL9ePS8fvVQ91ZlsZQLyq67sy2i0lAxvH6xYbRxyUaaR4CnW0jU8TbgwKTWnxRTHA==",
       "path": "restsharp/106.4.2",
       "hashPath": "restsharp.106.4.2.nupkg.sha512"
     },
@@ -731,7 +738,7 @@
     "System.Data.SqlClient/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qXTvTFkBds7bnN+ntBMHGvmH3pCAkfT4TE1z2Xvfqo4wKMQC77O4aXsYCc7dzCESC+/Gom6l0GLuebpFx7MDvg==",
+      "sha512": "sha512-cTPUCClr34EGBnyazUeciMD6sNm9aiE/li3uGvJ7z5dGup9QxKwysUeKXIrCO0E5KtQQAzGORFEYmowyEpcL2A==",
       "path": "system.data.sqlclient/4.5.1",
       "hashPath": "system.data.sqlclient.4.5.1.nupkg.sha512"
     },
@@ -745,7 +752,7 @@
     "System.Diagnostics.DiagnosticSource/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-m86SgxAIi5j0iGzx2y1LrcMcopIYfinfcojyQ9CcNRy3MZvi0dVuDlMj2M7kV6MMGSunqZ+OnQ+rQbxWafFBaw==",
+      "sha512": "sha512-zCno/m44ymWhgLFh7tELDG9587q0l/EynPM0m4KgLaWQbz/TEKvNRX2YT5ip2qXW/uayifQ2ZqbnErsKJ4lYrQ==",
       "path": "system.diagnostics.diagnosticsource/4.5.1",
       "hashPath": "system.diagnostics.diagnosticsource.4.5.1.nupkg.sha512"
     },
@@ -759,7 +766,7 @@
     "System.Interactive.Async/3.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hZccYiIE5RS1/J9Tb/BNtosAGVggdlsJm4Ojdu+gDV0p4AIi+LUfUogMKkRacljQEJd2AG6vYzvcjhQFkqoZmw==",
+      "sha512": "sha512-x9y2omkjEudKbIVuhUzeWw7ZlouEzpk4W98woCEq1lq9gJxERBKRKDTHF5JPEws9E0f4/Uei/2vLxEy1IrfmMg==",
       "path": "system.interactive.async/3.1.1",
       "hashPath": "system.interactive.async.3.1.1.nupkg.sha512"
     },
@@ -871,7 +878,7 @@
     "System.Runtime.CompilerServices.Unsafe/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qUJMNWhbm9oZ3XaMFiEMiYmRPszbnXIkRIi7+4b2Md2xZ6JUOepf0/kY3S85qistRohl9OdMe4PsO+RdG2kTIQ==",
+      "sha512": "sha512-x/3d5xb+mc9e4I2GOOT+HPRWMZLbYjNN/kYKsb0fyUKcWizn/t1CIrGRLIBhv7H0ptYEt+WTTztdPmwSUMyKig==",
       "path": "system.runtime.compilerservices.unsafe/4.5.1",
       "hashPath": "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
     },
@@ -931,11 +938,6 @@
     },
     "WpOportunidades.Infrastructure/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Newtonsoft.Json/11.0.0.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

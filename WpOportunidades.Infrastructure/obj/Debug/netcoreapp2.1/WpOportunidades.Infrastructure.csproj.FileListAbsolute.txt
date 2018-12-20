@@ -22,3 +22,15 @@ C:\Work\wpoportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\Wp
 C:\Work\wpoportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.csproj.CopyComplete
 C:\Work\wpoportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
 C:\Work\wpoportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.deps.json
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.csprojAssemblyReference.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.AssemblyInfo.cs
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.csproj.CopyComplete
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Users\gilbe_000\Desktop\WpOportunidade\WpOportunidades.Infrastructure\obj\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
