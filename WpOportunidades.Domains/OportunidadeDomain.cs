@@ -204,6 +204,29 @@ namespace WpOportunidades.Domains
             }
         }
 
+        public async Task<IEnumerable<Oportunidade>> GetAllAppAsync(int idCliente, int idUsuario, string token)
+        {
+            try
+            {
+                await _segService.ValidateTokenAsync(token);
+
+                var optsUser = _repository.GetList(x => x.UserId.Equals(idUsuario)).Select(x => x.OportunidadeId);
+
+                var result = _opRepository.GetList(o => o.Status != 9 && o.IdCliente.Equals(idCliente) && !optsUser.Contains(o.ID)
+                    && o.DataOportunidade >= DateTime.Today && o.HoraInicio.Subtract(DateTime.Now.TimeOfDay) >= new TimeSpan(0, 0, 0));
+
+                return result;
+            }
+            catch (InvalidTokenException e)
+            {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                throw new OportunidadeException("Não foi possível recuperar a lista de oportunidades.", e);
+            }
+        }
+
 
         /// <summary>
         /// 
@@ -213,7 +236,7 @@ namespace WpOportunidades.Domains
         /// <returns></returns>
         /// <exception cref="OportunidadeException"></exception>
         /// <exception cref="InvalidTokenException"></exception>
-        public async Task SaveUserXOportunidadeAsync(string token, UserXOportunidade userXOportunidade)
+        public async Task<UserXOportunidade> SaveUserXOportunidadeAsync(string token, UserXOportunidade userXOportunidade)
         {
             try
             {
@@ -221,11 +244,13 @@ namespace WpOportunidades.Domains
 
                 if (userXOportunidade.ID == 0)
                 {
-                    var result = _repository.Add(userXOportunidade);
+                    userXOportunidade.ID = _repository.Add(userXOportunidade);
+                    return userXOportunidade;
                 }
                 else
                 {
                     _repository.Update(userXOportunidade);
+                    return userXOportunidade;
                 }
             }
             catch (InvalidTokenException e)

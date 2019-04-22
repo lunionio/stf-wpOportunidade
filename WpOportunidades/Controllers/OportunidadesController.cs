@@ -154,6 +154,45 @@ namespace WpOportunidades.Controllers
             }
         }
 
+        [HttpGet("GetAllApp/{idCliente:int}/{idUsuario:int}/{token}")]
+        public async Task<IActionResult> GetOportunidadesAppAsync([FromRoute]string token, [FromRoute]int idCliente, [FromRoute]int idUsuario)
+        {
+            try
+            {
+                var oportunidades = await _opDomain.GetAllAppAsync(idCliente, idUsuario, token);
+
+                var enderecos = await _edDomain.GetAllAsync(oportunidades.Select(o => o.ID).ToList(), token);
+                foreach (var opt in oportunidades)
+                {
+                    opt.Endereco = enderecos.FirstOrDefault(e => e.OportunidadeId.Equals(opt.ID));
+                }
+
+                var statuses = await _sDomain.GetAllAsync(idCliente, token);
+                foreach (var o in oportunidades)
+                {
+                    o.OportunidadeStatus = statuses.FirstOrDefault(s => s.ID.Equals(o.OportunidadeStatusID));
+                }
+
+                return Ok(oportunidades);
+            }
+            catch (InvalidTokenException e)
+            {
+                return StatusCode(401, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (OportunidadeException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (EnderecoException e)
+            {
+                return StatusCode(400, $"{ e.Message } { e.InnerException.Message }");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Ocorreu um erro ao tentar listar as oportunidades disponíveis. Entre em contato com o suporte.");
+            }
+        }
+
         [HttpGet("GetByCliente/{idUsuarioCriacao:int}/{idCliente:int}/{token}")]
         public async Task<IActionResult> GetOportunidadesByClienteAsync([FromRoute]int idUsuarioCriacao, [FromRoute]int idCliente, [FromRoute]string token)
         {
@@ -267,7 +306,7 @@ namespace WpOportunidades.Controllers
         {
             try
             {
-                await _opDomain.SaveUserXOportunidadeAsync(token, userXOportunidade);
+                var result = await _opDomain.SaveUserXOportunidadeAsync(token, userXOportunidade);
 
                 if (userXOportunidade.StatusID == 1) //Aprovado
                 {
@@ -278,7 +317,7 @@ namespace WpOportunidades.Controllers
                     }
                 }
 
-                return Ok("Usuário foi relacionado a oportunidade com sucesso.");
+                return Ok(result);
             }
             catch (InvalidTokenException e)
             {
