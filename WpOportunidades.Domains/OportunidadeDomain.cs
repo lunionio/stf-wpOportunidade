@@ -285,13 +285,20 @@ namespace WpOportunidades.Domains
                 var statusIds = result.Select(r => r.StatusID);
                 var allStatus = new StatusRepository().GetList(s => statusIds.Contains(s.ID));
 
+                IList<Oportunidade> response = new List<Oportunidade>();
+
                 foreach (var r in result)
                 {
                     r.Oportunidade = opts.FirstOrDefault(o => o.ID.Equals(r.OportunidadeId));
-                    r.Oportunidade.OptStatus = allStatus.FirstOrDefault(s => s.ID.Equals(r.StatusID));
+
+                    if (r.Oportunidade != null)
+                    {
+                        r.Oportunidade.OptStatus = allStatus.FirstOrDefault(s => s.ID.Equals(r.StatusID));
+                        response.Add(r.Oportunidade);
+                    }
                 }
 
-                return result.Select(r => r.Oportunidade);
+                return response;
             }
             catch (InvalidTokenException e)
             {
