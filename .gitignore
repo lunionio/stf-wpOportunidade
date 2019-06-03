@@ -133,3 +133,4 @@ WpOportunidades/obj/Release/netcoreapp2.1/WpOportunidades.RazorTargetAssemblyInf
 WpOportunidades/obj/WpOportunidades.csproj.EntityFrameworkCore.targets
 WpOportunidades/obj/WpOportunidades.csproj.nuget.cache
 WpOportunidades/obj/WpOportunidades.csproj.nuget.g.props
+/.vs/WpOportunidades/v16/Server/sqlite3/db.lock

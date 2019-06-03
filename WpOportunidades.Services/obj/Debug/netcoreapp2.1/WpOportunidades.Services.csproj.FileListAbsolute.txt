@@ -68,3 +68,17 @@ C:\Work\StaffProAzure\WpOportunidade\WpOportunidades.Services\obj\Debug\netcorea
 C:\Work\StaffProAzure\WpOportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.csproj.CopyComplete
 C:\Work\StaffProAzure\WpOportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.dll
 C:\Work\StaffProAzure\WpOportunidade\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Services.deps.json
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.dll
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.dll
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Infrastructure.pdb
+C:\Work\Oportunidades\WpOportunidades.Services\bin\Debug\netcoreapp2.1\WpOportunidades.Entities.pdb
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.csprojAssemblyReference.cache
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.csproj.CoreCompileInputs.cache
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.AssemblyInfoInputs.cache
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.AssemblyInfo.cs
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.csproj.CopyComplete
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.dll
+C:\Work\Oportunidades\WpOportunidades.Services\obj\Debug\netcoreapp2.1\WpOportunidades.Services.pdb
